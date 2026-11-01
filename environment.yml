@@ -1,0 +1,6 @@
+channels:
+  - conda-forge
+dependencies:
+  # uv installs the locked project (pyproject.toml, uv.lock) in .venv.
+  - python=3.13
+  - uv=0.12.13

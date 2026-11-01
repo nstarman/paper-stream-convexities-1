@@ -1,0 +1,1110 @@
+{
+  "schema": 1,
+  "root": "stream-convexity-rate",
+  "source": {
+    "repo": "nstarman/nstarman.github.io",
+    "ref": "main",
+    "sha": "d019d4b77f5ad109b60946e5976f1c6234f2ee05"
+  },
+  "items": [
+    {
+      "id": "potamides-joss",
+      "type": "publication",
+      "cvs": [
+        "np"
+      ],
+      "date": {
+        "start": "2026-10"
+      },
+      "title": "Potamides: JAX tools for curvature-based inference from stellar streams",
+      "shortTitle": "Potamides: The Software",
+      "nickTitle": "Potamides Software",
+      "status": "published",
+      "entryType": "article",
+      "authors": [
+        {
+          "family": "Wu",
+          "given": "Sirui",
+          "student": "graduate",
+          "mentee": "sirui-wu-copenhagen",
+          "orcid": "0009-0003-4675-3622"
+        },
+        {
+          "family": "Starkman",
+          "given": "Nathaniel",
+          "me": true,
+          "orcid": "0000-0003-3954-3291"
+        },
+        {
+          "family": "Nibauer",
+          "given": "Jacob",
+          "orcid": "0000-0001-8042-5794"
+        },
+        {
+          "family": "Pearson",
+          "given": "Sarah",
+          "orcid": "0000-0003-0256-5446"
+        }
+      ],
+      "funding": [
+        {
+          "funder": "VILLUM FONDEN",
+          "award": "Research grant",
+          "number": "VIL53081",
+          "recipients": [
+            "Pearson"
+          ]
+        },
+        {
+          "funder": "European Research Council",
+          "award": "BeyondSTREAMS",
+          "number": "101115754",
+          "recipients": [
+            "Pearson"
+          ]
+        },
+        {
+          "funder": "The Brinson Foundation",
+          "award": "Brinson Prize Fellowship",
+          "recipients": [
+            "Starkman"
+          ],
+          "grant": "brinson-prize-fellowship"
+        }
+      ],
+      "venue": {
+        "journal": "Journal of Open Source Software",
+        "volume": "11",
+        "number": "126",
+        "pages": "10712"
+      },
+      "doi": "10.21105/joss.10712",
+      "links": [
+        {
+          "rel": "paper",
+          "url": "https://doi.org/10.21105/joss.10712"
+        },
+        {
+          "rel": "code",
+          "url": "https://github.com/xggs-dev/potamides"
+        }
+      ],
+      "refs": [
+        "potamides",
+        "galax",
+        "unxt"
+      ],
+      "tags": [
+        "streams",
+        "jax",
+        "software",
+        "dynamics"
+      ],
+      "abstract": "Potamides is a Python package for inferring the mass distribution of galaxies from the projected shapes of stellar streams in imaging data. Stellar streams are elongated structures produced when star clusters or dwarf galaxies are tidally disrupted by their host. Because their projected tracks carry information about the host's gravitational field, the local curvature of a stream can constrain the underlying potential. The package implements and extends the curvature-based likelihood framework of Nibauer et al. (2023). Rather than generating a full dynamical realization of a stellar stream for each trial model, Potamides represents observed stream tracks with JAX-based splines. It evaluates gravitational accelerations in candidate potentials and compares them directly to the local stream geometry. This provides a lower-cost inference workflow that complements traditional forward-modeling approaches. Potamides supports the complete analysis pipeline for a galaxy, from annotating stream ridge-lines to evaluating likelihoods across many potential models.",
+      "highlight": {
+        "topic": "extragalactic",
+        "image": "highlights/potamides-joss.webp",
+        "alt": "Relative likelihood of a halo’s y-axis flattening, q₂, from a Potamides tutorial: a flat plateau from about 0.7 to 1.55 that contains the true value, q₂ = 1, falling to zero on either side.",
+        "description": "Potamides is a JAX package that infers a galaxy’s mass distribution from the shapes of its stellar streams. Rather than simulating a stream for every trial potential, it fits the observed track with splines and compares its curvature directly to the potential’s accelerations. It covers the pipeline from annotating streams to evaluating likelihoods. Led by Sirui Wu."
+      }
+    },
+    {
+      "id": "stream-convexity-rate",
+      "type": "publication",
+      "cvs": [
+        "np",
+        "2page",
+        "1page"
+      ],
+      "featured": true,
+      "date": {
+        "start": "2026-09"
+      },
+      "title": "When Streams Curve Away: a Test of Dark Matter from Extragalactic Stellar Stream Populations",
+      "shortTitle": "When Streams Curve Away",
+      "nickTitle": "When Streams Curve Away",
+      "status": "submitted",
+      "entryType": "misc",
+      "venue": {
+        "journal": "The Astrophysical Journal"
+      },
+      "arxiv": "2609.40057",
+      "primaryClass": "astro-ph.GA",
+      "authors": [
+        {
+          "family": "Starkman",
+          "given": "Nathaniel",
+          "me": true,
+          "orcid": "0000-0003-3954-3291"
+        },
+        {
+          "family": "Nibauer",
+          "given": "Jacob",
+          "orcid": "0000-0001-8042-5794"
+        },
+        {
+          "family": "Pearson",
+          "given": "Sarah",
+          "orcid": "0000-0003-0256-5446"
+        },
+        {
+          "family": "Wu",
+          "given": "Sirui",
+          "student": "graduate",
+          "mentee": "sirui-wu-copenhagen",
+          "orcid": "0009-0003-4675-3622"
+        },
+        {
+          "family": "Necib",
+          "given": "Lina",
+          "orcid": "0000-0003-2806-1414"
+        }
+      ],
+      "funding": [
+        {
+          "funder": "National Science Foundation",
+          "award": "CAREER award",
+          "number": "AST-2337864",
+          "recipients": [
+            "Necib"
+          ]
+        },
+        {
+          "funder": "National Science Foundation",
+          "award": "Graduate Research Fellowship",
+          "number": "DGE-2039656",
+          "recipients": [
+            "Nibauer"
+          ]
+        },
+        {
+          "funder": "Alfred P. Sloan Foundation",
+          "award": "Sloan Research Fellowship",
+          "recipients": [
+            "Necib"
+          ]
+        },
+        {
+          "funder": "VILLUM FONDEN",
+          "award": "Research grant",
+          "number": "VIL53081",
+          "recipients": [
+            "Pearson"
+          ]
+        },
+        {
+          "funder": "European Research Council",
+          "award": "BeyondSTREAMS",
+          "number": "101115754",
+          "recipients": [
+            "Pearson"
+          ]
+        },
+        {
+          "funder": "The Brinson Foundation",
+          "award": "Brinson Prize Fellowship",
+          "recipients": [
+            "Starkman"
+          ],
+          "grant": "brinson-prize-fellowship"
+        }
+      ],
+      "links": [
+        {
+          "rel": "syw",
+          "url": "https://github.com/nstarman/paper-stream-convexities-1"
+        },
+        {
+          "rel": "homepage",
+          "url": "https://nstarkman.space/paper-stream-convexities-1/",
+          "label": "The paper's site"
+        }
+      ],
+      "refs": [
+        "potamides",
+        "phasecurvefit",
+        "galax",
+        "coordinax",
+        "unxt"
+      ],
+      "tags": [
+        "extragalactic",
+        "streams",
+        "dark-matter",
+        "dynamics"
+      ],
+      "abstract": "The nature of dark matter sets the shape of galactic halos: collisionless cold dark matter (CDM) predicts triaxial halos, while scattering in self-interacting dark matter (SIDM) rounds them toward sphericity. We show that a large catalog of projected stellar stream tracks can statistically constrain halo shapes, and therefore the particle nature of dark matter, without detailed modeling of any individual stream or gravitational potential. We develop a new geometric diagnostic for stellar streams: if the curvature of any segment along a stream points away from the host galaxy's projected center of mass, then that stream falsifies broad classes of potentials, including spherical ones. We call such a segment convex. The diagnostic needs only a projected stream track and a host-center estimate, requiring no kinematics, distances, progenitor model, or fit to individual host potentials. Halo triaxiality sets the rate at which streams show convex segments, making this rate an observable of the halo-shape distribution and the underlying dark-matter model. We forecast that upcoming survey-scale stream morphology catalogs can discriminate between CDM and SIDM at up to $5\\sigma$.",
+      "highlight": {
+        "topic": "extragalactic",
+        "image": "highlights/stream-convexity-rate.webp",
+        "alt": "Likelihood ratio between CDM and SIDM plotted against the observed fraction of streams with a convex segment, for catalogs of 100, 1,000 and 10,000 streams. The curves steepen with catalog size; at 10,000 streams, either predicted rate is strongly favored.",
+        "description": "How often stellar streams curve away from their host galaxy’s center can tell cold from self-interacting dark matter at up to 5σ, with catalogs the size Euclid, Rubin and Roman will provide. In a spherical halo a stream cannot curve this way in projection; in a triaxial halo, which cold dark matter predicts, it can. The test needs only the stream’s projected track and the host’s center: no distances, velocities or model of the stream’s progenitor."
+      },
+      "bibcode": "2026arXiv260940057S",
+      "citations": 0
+    },
+    {
+      "id": "phasecurvefit",
+      "type": "software",
+      "tier": "minor",
+      "group": "dynamics",
+      "cvs": [
+        "np",
+        "2page",
+        "1page"
+      ],
+      "date": {
+        "start": "2026-01",
+        "present": true
+      },
+      "title": "phasecurvefit",
+      "summary": "Paths through phase space",
+      "repo": "GalacticDynamics/phasecurvefit",
+      "links": [
+        {
+          "rel": "code",
+          "url": "https://github.com/GalacticDynamics/phasecurvefit"
+        }
+      ],
+      "tags": [
+        "jax"
+      ],
+      "details": "Fit a curve through phase-space points — streams, orbits, trajectories.",
+      "highlight": {
+        "topic": "software",
+        "image": "highlights/phasecurvefit.webp",
+        "source": {
+          "repo": "GalacticDynamics/phasecurvefit",
+          "path": "docs/_static/favicon.png",
+          "sha": "bc63a16bac9118606dc5756c1352128446346168"
+        },
+        "alt": "The phasecurvefit logo: noisy points along a self-crossing looped curve, coloured by their fitted order from red through yellow to blue, with the learned mean path drawn as a black line.",
+        "description": "Fits a curve through points in phase space — a stellar stream, an orbit, a trajectory — ordering them along it."
+      },
+      "refs": [
+        "phasecurvefit-joss"
+      ]
+    },
+    {
+      "id": "phasecurvefit-joss",
+      "type": "publication",
+      "cvs": [
+        "np"
+      ],
+      "date": {
+        "start": "2026-01"
+      },
+      "title": "phasecurvefit: A High-Performance JAX Framework for Phase-Space Walks with Pluggable Metrics and Strategies",
+      "shortTitle": "phasecurvefit",
+      "nickTitle": "phasecurvefit",
+      "status": "submitted",
+      "entryType": "misc",
+      "authors": [
+        {
+          "family": "Starkman",
+          "given": "Nathaniel",
+          "me": true,
+          "orcid": "0000-0003-3954-3291"
+        },
+        {
+          "family": "Nibauer",
+          "given": "Jacob",
+          "orcid": "0000-0001-8042-5794"
+        }
+      ],
+      "funding": [
+        {
+          "funder": "The Brinson Foundation",
+          "award": "Brinson Prize Fellowship",
+          "recipients": [
+            "Starkman"
+          ],
+          "grant": "brinson-prize-fellowship"
+        },
+        {
+          "funder": "National Science Foundation",
+          "award": "Graduate Research Fellowship",
+          "number": "DGE-2039656",
+          "recipients": [
+            "Nibauer"
+          ]
+        }
+      ],
+      "venue": {
+        "journal": "Journal of Open Source Software"
+      },
+      "details": "Accepted by pyOpenSci; submitted to JOSS.",
+      "links": [
+        {
+          "rel": "paper",
+          "url": "https://github.com/pyOpenSci/software-submission/issues/285",
+          "label": "pyOpenSci review"
+        },
+        {
+          "rel": "code",
+          "url": "https://github.com/GalacticDynamics/phasecurvefit"
+        }
+      ],
+      "refs": [
+        "phasecurvefit"
+      ],
+      "tags": [
+        "software"
+      ],
+      "citeslug": "phasecurvefit",
+      "abstract": "Filamentary structures are ubiquitous in the physical sciences, ranging from coherent streams of stars called stellar streams to elongated structures in turbulent fluids, plasmas, and the interstellar medium. In the context of stellar streams, a common preprocessing step is ordering observational or simulation data to derive the mean path of the stream's trajectory through phase-space. phasecurvefit is an open-source Python package for constructing such orderings and paths by walking along the local phase-space flow using JAX. There are two core components: the first is walk_local_flow which builds an approximate ordering and trajectory but which might miss some of the data; and the second is a fast-to-train autoencoder that imputes the full ordering and trajectory. walk_local_flow is very modular and can be customized to use any: 1. distance metric that scores candidate next steps in phase space, and 2. query strategy, like brute-force or KD-trees, that proposes which candidates to consider. This design makes the Nearest Neighbors with Momentum (NN+p) method from one particular configuration (via phasecurvefit.metrics.AlignedMomentumDistanceMetric), while enabling alternative metrics and search strategies better matched to different data scenarios and performance constraints. In addition to the walk itself, phasecurvefit packages a neural-network gap-filling component which assigns a continuous ordering parameter to data skipped during the walk and reconstructs the spatial mean path of the structure. This encoder develops upon the one in: speeding up different components of training by between 1 and 3 orders of magnitude; adding an intermediate decoder-only training that quarters the epochs necessary for training the full autoencoder, halving the overall training time; and adding stabilization of the loss function across training phases.",
+      "highlight": {
+        "topic": "software",
+        "image": "highlights/phasecurvefit-joss.webp",
+        "alt": "The phasecurvefit logo: noisy points along a self-crossing looped curve, coloured by their fitted order from red through yellow to blue, with the learned mean path drawn as a black line.",
+        "description": "A stellar stream is observed as an unordered cloud of stars, so fitting one starts with putting them in order along it. phasecurvefit does this by walking from star to star through phase space, with a choice of distance metrics and search strategies, then trains a neural network to place any stars the walk skipped and trace the stream’s smooth central path. Built on JAX, it is fast and differentiable: each step takes seconds."
+      }
+    },
+    {
+      "id": "potamides",
+      "type": "software",
+      "cvs": [
+        "np",
+        "2page",
+        "1page"
+      ],
+      "featured": true,
+      "date": {
+        "start": "2025-03",
+        "present": true
+      },
+      "title": "potamides",
+      "summary": "Constrain gravitational potentials from stellar stream curvature",
+      "details": "A JAX package that fits stream tracks with splines and compares their curvature directly to a potential's accelerations. Co-led with Sirui Wu.",
+      "highlight": {
+        "topic": "software",
+        "image": "highlights/potamides.webp",
+        "source": {
+          "repo": "xggs-dev/potamides",
+          "path": "docs/static/favicon.svg",
+          "sha": "fe89097f70d17a6bc0101d6c9a6cfaf61ecf180f"
+        },
+        "alt": "The potamides logo: a capital Phi, for the gravitational potential, its ring a stream of stars shaded teal into purple with three arrows a side pointing in, on a dark rounded square.",
+        "description": "Fits stream tracks with splines in JAX and compares their curvature directly to a potential's accelerations."
+      },
+      "repo": "xggs-dev/potamides",
+      "role": "co-lead developer",
+      "refs": [
+        "potamides-joss"
+      ],
+      "links": [
+        {
+          "rel": "code",
+          "url": "https://github.com/xggs-dev/potamides"
+        }
+      ],
+      "tags": [
+        "jax",
+        "streams"
+      ],
+      "tier": "major",
+      "group": "dynamics",
+      "order": 1
+    },
+    {
+      "id": "unxt-joss",
+      "type": "publication",
+      "cvs": [
+        "np",
+        "2page"
+      ],
+      "featured": true,
+      "date": {
+        "start": "2025-03"
+      },
+      "title": "unxt: A Python package for unit-aware computing with JAX",
+      "shortTitle": "unxt",
+      "nickTitle": "unxt",
+      "status": "published",
+      "entryType": "article",
+      "authors": [
+        {
+          "family": "Starkman",
+          "given": "Nathaniel",
+          "me": true,
+          "orcid": "0000-0003-3954-3291"
+        },
+        {
+          "family": "Price-Whelan",
+          "given": "Adrian M.",
+          "orcid": "0000-0003-0872-7098",
+          "affiliation": "Center for Computational Astrophysics, Flatiron Institute, USA"
+        },
+        {
+          "family": "Nibauer",
+          "given": "Jake",
+          "orcid": "0000-0001-8042-5794",
+          "affiliation": "Department of Physics, Princeton University, USA"
+        }
+      ],
+      "funding": [
+        {
+          "funder": "The Brinson Foundation",
+          "award": "Brinson Prize Fellowship",
+          "recipients": [
+            "Starkman"
+          ],
+          "grant": "brinson-prize-fellowship"
+        }
+      ],
+      "venue": {
+        "journal": "Journal of Open Source Software",
+        "volume": "10",
+        "number": "107",
+        "pages": "7771"
+      },
+      "doi": "10.21105/joss.07771",
+      "links": [
+        {
+          "rel": "paper",
+          "url": "https://doi.org/10.21105/joss.07771"
+        },
+        {
+          "rel": "code",
+          "url": "https://github.com/GalacticDynamics/unxt"
+        },
+        {
+          "rel": "docs",
+          "url": "https://unxt.readthedocs.io/en/stable/"
+        }
+      ],
+      "refs": [
+        "unxt",
+        "quax"
+      ],
+      "tags": [
+        "jax",
+        "software"
+      ],
+      "citeslug": "unxt",
+      "abstract": "unxt is a Python package for unit-aware computing with JAX. unxt is built on top of quax, which provides a framework for building array-like objects that can be used with JAX. unxt extends quax to provide support for unit-aware computing using the astropy.units package as a units backend. unxt provides seamless integration of physical units into high performance numerical computations, significantly enhancing the capabilities of JAX for scientific applications.",
+      "highlight": {
+        "topic": "software",
+        "image": "highlights/unxt-joss.webp",
+        "alt": "The unxt logo: a ruler crossed with a green pencil on a blue square.",
+        "description": "JAX gives scientific Python automatic differentiation, compilation and GPUs, but no physical units. unxt adds them: quantities that carry their units through jitted, differentiated and vectorized code, with astropy.units under the hood and an interface astropy users will recognize. It underpins the GalacticDynamics stack, including coordinax and galax."
+      },
+      "bibcode": "2025JOSS...10.7771S",
+      "citations": 2
+    },
+    {
+      "id": "galax",
+      "type": "software",
+      "cvs": [
+        "np",
+        "2page",
+        "1page"
+      ],
+      "featured": true,
+      "date": {
+        "start": "2024-03",
+        "present": true
+      },
+      "title": "galax",
+      "summary": "Galactic dynamics in JAX",
+      "details": "Orbit integration, potentials and stream generation — GPU-accelerated and fully differentiable.",
+      "highlight": {
+        "topic": "software",
+        "image": "highlights/galax.webp",
+        "source": {
+          "repo": "GalacticDynamics/galax",
+          "path": "docs/_static/favicon.svg",
+          "sha": "a632deec41bd970db91ae1849d953d6a85f4b094"
+        },
+        "alt": "The galax logo, the GalacticDynamics mark: a painted spiral galaxy with a glowing core on a dark disk, circled by a dark ring, between a teal < and a purple > code bracket.",
+        "description": "Galactic dynamics in JAX: potentials, orbit integration and stream generation, GPU-accelerated and fully differentiable."
+      },
+      "repo": "GalacticDynamics/galax",
+      "role": "lead developer",
+      "doi": "10.5281/zenodo.11553485",
+      "authors": [
+        {
+          "family": "Starkman",
+          "given": "Nathaniel",
+          "me": true,
+          "orcid": "0000-0003-3954-3291"
+        },
+        {
+          "family": "Price-Whelan",
+          "given": "Adrian",
+          "orcid": "0000-0003-0872-7098"
+        },
+        {
+          "family": "Nibauer",
+          "given": "Jacob",
+          "orcid": "0000-0001-8042-5794"
+        }
+      ],
+      "links": [
+        {
+          "rel": "code",
+          "url": "https://github.com/GalacticDynamics/galax"
+        },
+        {
+          "rel": "docs",
+          "url": "https://galax.readthedocs.io"
+        },
+        {
+          "rel": "data",
+          "url": "https://doi.org/10.5281/zenodo.11553485"
+        }
+      ],
+      "tags": [
+        "jax",
+        "dynamics"
+      ],
+      "tier": "major",
+      "group": "dynamics"
+    },
+    {
+      "id": "coordinax",
+      "type": "software",
+      "cvs": [
+        "np",
+        "2page",
+        "1page"
+      ],
+      "featured": true,
+      "date": {
+        "start": "2024-02",
+        "present": true
+      },
+      "title": "coordinax",
+      "summary": "Coordinates in JAX",
+      "details": "Vectors, frames and transformations — differentiable, and unit-aware via unxt.",
+      "highlight": {
+        "topic": "software",
+        "image": "highlights/coordinax.webp",
+        "source": {
+          "repo": "GalacticDynamics/coordinax",
+          "path": "docs/_static/favicon.png",
+          "sha": "8ed309f5b1ac3d23bf65e97b09854398d4507d78"
+        },
+        "alt": "The coordinax logo: a ruler crossed with a green arrow on a blue square.",
+        "description": "Coordinates in JAX: vectors, frames and the transformations between them, differentiable and unit-aware through unxt."
+      },
+      "repo": "GalacticDynamics/coordinax",
+      "role": "lead developer",
+      "links": [
+        {
+          "rel": "code",
+          "url": "https://github.com/GalacticDynamics/coordinax"
+        },
+        {
+          "rel": "docs",
+          "url": "https://coordinax.readthedocs.io"
+        }
+      ],
+      "refs": [
+        "unxt"
+      ],
+      "tags": [
+        "jax",
+        "coordinates"
+      ],
+      "tier": "major",
+      "group": "foundations"
+    },
+    {
+      "id": "sirui-wu-copenhagen",
+      "type": "mentoring",
+      "cvs": [
+        "np",
+        "2page",
+        "1page"
+      ],
+      "date": {
+        "start": "2024",
+        "end": "2026"
+      },
+      "title": "Sirui Wu (PhD student of Sarah Pearson, Copenhagen)",
+      "details": [
+        "Dark matter halo shapes from stellar stream curvature",
+        "First-author papers: [in The Astrophysical Journal](item:potamides-apj) and [in the Journal of Open Source Software](item:potamides-joss)"
+      ],
+      "student": "Sirui Wu (PhD student of Sarah Pearson, Copenhagen)",
+      "refs": [
+        "potamides-apj",
+        "potamides-joss"
+      ],
+      "slug": "sirui-wu",
+      "person": {
+        "family": "Wu",
+        "given": "Sirui",
+        "orcid": "0009-0003-4675-3622",
+        "level": "graduate"
+      },
+      "journey": [
+        {
+          "organization": "University of Copenhagen",
+          "city": "Copenhagen",
+          "country": "DK",
+          "start": "2024",
+          "role": "PhD student"
+        }
+      ],
+      "photo": "people/sirui-wu.webp"
+    },
+    {
+      "id": "unxt",
+      "type": "software",
+      "cvs": [
+        "np",
+        "2page",
+        "1page"
+      ],
+      "featured": true,
+      "date": {
+        "start": "2023-12",
+        "present": true
+      },
+      "title": "unxt",
+      "summary": "Units in JAX",
+      "details": "Unit-aware quantities that survive jit, grad and vmap.",
+      "highlight": {
+        "topic": "software",
+        "image": "highlights/unxt.webp",
+        "source": {
+          "repo": "GalacticDynamics/unxt",
+          "path": "docs/_static/favicon.png",
+          "sha": "dd3223573672d5af47ab347c27d5faeb2071be72"
+        },
+        "alt": "The unxt logo: a ruler crossed with a green pencil on a blue square.",
+        "description": "Unit-aware quantities for JAX: they carry their units through jitted, differentiated and vectorized code, with astropy.units under the hood."
+      },
+      "repo": "GalacticDynamics/unxt",
+      "role": "lead developer",
+      "links": [
+        {
+          "rel": "code",
+          "url": "https://github.com/GalacticDynamics/unxt"
+        },
+        {
+          "rel": "docs",
+          "url": "https://unxt.readthedocs.io/en/stable/"
+        }
+      ],
+      "tags": [
+        "jax",
+        "units"
+      ],
+      "tier": "major",
+      "group": "foundations",
+      "refs": [
+        "unxt-joss"
+      ]
+    }
+  ],
+  "config": {
+    "collaborators": {
+      "$comment": "Generated by scripts/collect-collaborators.mjs from public ORCID employment records. Do not edit by hand — run the script. An empty `affiliations` means that person lists no employment on ORCID, not that they have none.",
+      "source": "https://orcid.org",
+      "people": [
+        {
+          "orcid": "0000-0001-8042-5794",
+          "name": "Jacob Nibauer",
+          "affiliations": [
+            {
+              "organization": "University of Pennsylvania",
+              "city": "Philadelphia",
+              "region": "PA",
+              "country": "US",
+              "role": null,
+              "kind": "education",
+              "start": "2017-06",
+              "end": null
+            },
+            {
+              "organization": "Princeton University",
+              "city": "Princeton",
+              "region": "New Jersey",
+              "country": "US",
+              "role": null,
+              "kind": "employment",
+              "start": null,
+              "end": null
+            }
+          ]
+        },
+        {
+          "orcid": "0000-0003-2806-1414",
+          "name": "Lina Necib",
+          "affiliations": [
+            {
+              "organization": "Massachusetts Institute of Technology",
+              "city": "Cambridge",
+              "region": "Massachusetts",
+              "country": "US",
+              "role": "Associate Professor",
+              "kind": "employment",
+              "start": "2026-07",
+              "end": null
+            },
+            {
+              "organization": "Massachusetts Institute of Technology",
+              "city": "Cambridge",
+              "region": "Massachusetts",
+              "country": "US",
+              "role": "Assistant Professor",
+              "kind": "employment",
+              "start": "2021-07",
+              "end": "2026-06"
+            },
+            {
+              "organization": "Observatories of the Carnegie Institution of Washington",
+              "city": "Pasadena",
+              "region": "CA",
+              "country": "US",
+              "role": null,
+              "kind": "employment",
+              "start": "2020-10",
+              "end": "2021-08"
+            },
+            {
+              "organization": "California Institute of Technology",
+              "city": "Pasadena",
+              "region": "CA",
+              "country": "US",
+              "role": "Postdoctoral Fellow",
+              "kind": "employment",
+              "start": "2017-09",
+              "end": "2020-06"
+            },
+            {
+              "organization": "Massachusetts Institute of Technology",
+              "city": "Cambridge",
+              "region": "Massachusetts",
+              "country": "US",
+              "role": null,
+              "kind": "education",
+              "start": null,
+              "end": null
+            }
+          ]
+        },
+        {
+          "orcid": "0000-0003-3954-3291",
+          "name": "Nathaniel Starkman",
+          "me": true,
+          "affiliations": [
+            {
+              "organization": "MIT",
+              "city": "Cambridge",
+              "region": null,
+              "country": "US",
+              "role": "Postdoctoral Fellow",
+              "kind": "employment",
+              "start": "2024-10",
+              "end": null
+            },
+            {
+              "organization": "Case Western Reserve University",
+              "city": "Cleveland",
+              "region": "OH",
+              "country": "US",
+              "role": "Visiting Researcher",
+              "kind": "employment",
+              "start": "2024",
+              "end": "2027"
+            },
+            {
+              "organization": "University of Toronto",
+              "city": "Toronto",
+              "region": "ON",
+              "country": "CA",
+              "role": "PhD Candidate",
+              "kind": "employment",
+              "start": "2018-09",
+              "end": "2024-08"
+            },
+            {
+              "organization": "University of Toronto",
+              "city": "Toronto",
+              "region": "ON",
+              "country": "CA",
+              "role": "PhD",
+              "kind": "education",
+              "start": "2018-09",
+              "end": "2024-09"
+            },
+            {
+              "organization": "Case Western Reserve University",
+              "city": "Cleveland",
+              "region": "OH",
+              "country": "US",
+              "role": "Associate Researcher",
+              "kind": "employment",
+              "start": "2017-05",
+              "end": "2018-05"
+            },
+            {
+              "organization": "CLASSE REU",
+              "city": "Ithaca",
+              "region": "New York",
+              "country": "US",
+              "role": "REU research associate",
+              "kind": "employment",
+              "start": "2016-05",
+              "end": "2016-08"
+            },
+            {
+              "organization": "Prof. John Ruhl, South Pole Telescope",
+              "city": "Cleveland",
+              "region": "Ohio",
+              "country": "US",
+              "role": "Associate Researcher",
+              "kind": "employment",
+              "start": "2015-05",
+              "end": "2015-08"
+            },
+            {
+              "organization": "Case Western Reserve University",
+              "city": "Cleveland",
+              "region": "OH",
+              "country": "US",
+              "role": "Bachelor of Science",
+              "kind": "education",
+              "start": "2014-08",
+              "end": "2018-05"
+            },
+            {
+              "organization": "European Organization for Nuclear Research",
+              "city": "Geneve",
+              "region": "Genève",
+              "country": "CH",
+              "role": "outreach assistant",
+              "kind": "employment",
+              "start": "2012-08",
+              "end": "2013-08"
+            }
+          ]
+        },
+        {
+          "orcid": "0000-0003-0256-5446",
+          "name": "Sarah Pearson",
+          "affiliations": [
+            {
+              "organization": "Technical University of Denmark",
+              "city": "Kongens Lyngby",
+              "region": "Capital Region",
+              "country": "DK",
+              "role": "Associate Professor",
+              "kind": "employment",
+              "start": "2026-05",
+              "end": null
+            },
+            {
+              "organization": "University of Copenhagen",
+              "city": "Copenhagen",
+              "region": null,
+              "country": "DK",
+              "role": "Assistant Professor",
+              "kind": "employment",
+              "start": "2023-12",
+              "end": null
+            },
+            {
+              "organization": "New York University",
+              "city": "New York",
+              "region": "NY",
+              "country": "US",
+              "role": "NASA Hubble Fellow",
+              "kind": "employment",
+              "start": "2020-12",
+              "end": "2023-12"
+            },
+            {
+              "organization": "Center for Computational Astrophysics",
+              "city": "NYC",
+              "region": "NY",
+              "country": "US",
+              "role": "Flatiron Research Fellow",
+              "kind": "employment",
+              "start": "2018-08",
+              "end": "2020-12"
+            },
+            {
+              "organization": "Columbia University",
+              "city": "New York",
+              "region": "NY",
+              "country": "US",
+              "role": "PhD",
+              "kind": "education",
+              "start": "2013-09",
+              "end": "2018-06"
+            },
+            {
+              "organization": "Københavns Universitet",
+              "city": "København K",
+              "region": null,
+              "country": "DK",
+              "role": null,
+              "kind": "employment",
+              "start": null,
+              "end": null
+            }
+          ]
+        },
+        {
+          "orcid": "0009-0003-4675-3622",
+          "name": "Sirui Wu",
+          "affiliations": [
+            {
+              "organization": "Sun Yat-sen University",
+              "city": "Guangzhou",
+              "region": null,
+              "country": "CN",
+              "role": "MPhil in Astrophysics",
+              "kind": "education",
+              "start": "2021-09",
+              "end": "2024-06"
+            },
+            {
+              "organization": "Lanzhou University",
+              "city": "Lanzhou",
+              "region": null,
+              "country": "CN",
+              "role": "BSc in Physics",
+              "kind": "education",
+              "start": "2017-09",
+              "end": "2021-06"
+            },
+            {
+              "organization": "Københavns Universitet",
+              "city": "København K",
+              "region": null,
+              "country": "DK",
+              "role": null,
+              "kind": "employment",
+              "start": null,
+              "end": null
+            }
+          ]
+        }
+      ]
+    },
+    "journals": {
+      "Journal of Open Source Software": "JOSS",
+      "The Astrophysical Journal": "ApJ"
+    },
+    "stars": {
+      "$comment": "Generated by scripts/collect-stars.mjs. Do not edit by hand.",
+      "stars": {
+        "GalacticDynamics/coordinax": 38,
+        "GalacticDynamics/galax": 51,
+        "GalacticDynamics/phasecurvefit": 6,
+        "GalacticDynamics/unxt": 70,
+        "xggs-dev/potamides": 3
+      }
+    },
+    "places": {
+      "$comment": "Coordinates for every place the site pins — collaborator institutions and presentation locations alike — resolved once with scripts/geocode-places.mjs and committed so the site and CI never call a geocoder. `matched` is what the geocoder thought it found — check it before trusting a pin. Safe to correct by hand: the script only fills in what is missing. A name that is the same campus as another is `{ \"sameAs\": \"<other name>\" }` rather than a second copy of the coordinates; read places through packages/data-resolver/src/places.js. Keep one entry per campus: tests/places.test.js fails on two entries with the same coordinates.",
+      "source": "https://nominatim.openstreetmap.org (ODbL)",
+      "places": {
+        "California Institute of Technology": {
+          "lat": 34.137,
+          "lon": -118.1253,
+          "matched": "California Institute of Technology, Moore Walk, Pasadena Council District 7, Pasadena, Los Angeles County, California, 91125, United States"
+        },
+        "Case Western Reserve University": {
+          "lat": 41.5014,
+          "lon": -81.6007,
+          "matched": "Case Western Reserve University, 10900, Euclid Avenue, Little Italy, Cleveland, Cuyahoga County, Ohio, 44106, United States"
+        },
+        "Center for Computational Astrophysics": {
+          "sameAs": "Flatiron Institute"
+        },
+        "CLASSE REU": {
+          "lat": 42.4534,
+          "lon": -76.4735,
+          "matched": "Set by hand: Cornell Laboratory for Accelerator-based Sciences and Education, Cornell University, Ithaca, New York, United States"
+        },
+        "Columbia University": {
+          "lat": 40.8078,
+          "lon": -73.9625,
+          "matched": "Columbia University, West 109th Street, Manhattan Valley, Manhattan Community Board 7, Manhattan, New York County, New York, 10027, United States"
+        },
+        "European Organization for Nuclear Research": {
+          "lat": 46.2338,
+          "lon": 6.0532,
+          "matched": "Set by hand: CERN, Meyrin site, Route de Meyrin, Meyrin, Geneva, Switzerland"
+        },
+        "Københavns Universitet": {
+          "sameAs": "University of Copenhagen"
+        },
+        "Lanzhou University": {
+          "lat": 36.0505,
+          "lon": 103.8545,
+          "matched": "兰州大学, 天水中路, 渭源路街道, 兰州市, 城关区, 兰州市, 甘肃省, 730001, 中国"
+        },
+        "Massachusetts Institute of Technology": {
+          "lat": 42.3583,
+          "lon": -71.0966,
+          "matched": "Massachusetts Institute of Technology, Ed Walsh's Way, East Cambridge, Cambridge, Middlesex County, Massachusetts, 02142, United States"
+        },
+        "MIT": {
+          "sameAs": "Massachusetts Institute of Technology"
+        },
+        "New York University": {
+          "lat": 40.7292,
+          "lon": -73.995,
+          "matched": "New York University, Sullivan Street, University Village, Manhattan, New York County, New York, 10012, United States"
+        },
+        "Observatories of the Carnegie Institution of Washington": {
+          "lat": 34.1563,
+          "lon": -118.1334,
+          "matched": "The Carnegie Observatories, Pasadena, CA (geocoded)"
+        },
+        "Princeton University": {
+          "lat": 40.3387,
+          "lon": -74.6584,
+          "matched": "Princeton University, Alexander Street, Princeton, Mercer County, New Jersey, 08540, United States"
+        },
+        "Prof. John Ruhl, South Pole Telescope": {
+          "sameAs": "Case Western Reserve University"
+        },
+        "Sun Yat-sen University": {
+          "lat": 23.0996,
+          "lon": 113.2924,
+          "matched": "中山大学(广州校区南校园), 135, 新港西路, 新港街道, 海珠区, 广州市, 广东省, 510275, 中国"
+        },
+        "Technical University of Denmark": {
+          "lat": 55.7854,
+          "lon": 12.5202,
+          "matched": "Danmarks Tekniske Universitet, Carlshøjvej, Fuglevad, Lundtofte, Kongens Lyngby, Lyngby-Taarbæk Kommune, Region Hovedstaden, 2800, Danmark"
+        },
+        "University of Copenhagen": {
+          "lat": 55.6802,
+          "lon": 12.5723,
+          "matched": "Københavns Universitet, Krystalgade, Nørrevold, Indre By, København, Københavns Kommune, Region Hovedstaden, 1171, Danmark"
+        },
+        "University of Pennsylvania": {
+          "lat": 39.9522,
+          "lon": -75.1956,
+          "matched": "University of Pennsylvania, 1, Chestnut Street, West Philadelphia, Philadelphia, Philadelphia County, Pennsylvania, 19104, United States"
+        },
+        "University of Toronto": {
+          "lat": 43.6635,
+          "lon": -79.3968,
+          "matched": "University of Toronto St. George, McCaul Street, University, Downtown, Toronto, Golden Horseshoe, Ontario, M5T 1P7, Canada"
+        },
+        "Flatiron Institute": {
+          "lat": 40.7397,
+          "lon": -73.9903,
+          "matched": "hand-placed: 162 Fifth Ave, New York — Nominatim has no entry"
+        }
+      }
+    },
+    "acknowledgements": {
+      "papers": []
+    }
+  },
+  "card": {
+    "preset": "paperSite"
+  }
+}

@@ -1,0 +1,42 @@
+---
+layout: ../components/Page.astro
+tab: overview
+---
+import Var from '../components/Var.astro';
+import Fig from '../components/Fig.astro';
+import Webapp from '../components/Webapp.astro';
+import { url as link } from '../lib/facts.js';
+
+Most of a galaxy's mass is dark matter, and what dark matter is sets the shape of the halo it forms.
+If dark matter is cold and collisionless (CDM), halos are triaxial: squashed differently along each
+of three axes. If its particles scatter off one another (self-interacting dark matter, SIDM), the
+collisions can round halos to be more spherical.
+
+Stellar streams trace a halo's shape. A stellar stream forms when the host galaxy's tides pull
+apart a satellite galaxy or globular cluster; its stars spread out along nearly the same orbit. In
+a spherical halo, a stream observed by an external view always appears to bend toward the centre
+of its galaxy. In a triaxial halo it need not: a segment of it can bend away. We call such a
+segment **convex**. Finding one needs only the stream's path on the sky and
+where its galaxy's centre is: no velocities, no distances, and no model of the stream or the halo.
+
+<div class="syw-card">
+  <Webapp name="convexity" height={650} full="explore/">
+    Two simulated streams in a triaxial halo. Drag the globe of viewing directions to turn it, or
+    drag a stream's square to see the stream from there: red marks where it bends away from the
+    galaxy's centre. Inside the globe, distances from the centre are on a square-root scale: a point r
+    from the centre is drawn at √(r / 90 kpc) of the globe's radius. The sky panels are to scale. <a href={link('explore/')}>The full version adds the two test orbits →</a>
+  </Webapp>
+</div>
+
+How often streams show a convex segment therefore follows how triaxial halos are. In our
+simulations, streams in CDM halos have a convex segment longer than <Var name="cosmology/ell_min" />
+about twice as often as streams in rounder SIDM halos. With enough streams, counting the convex
+ones tells the two apart.
+
+<div class="syw-card">
+  <Fig label="fig:cosmology:zlr" />
+</div>
+
+Today's catalogs hold about a hundred streams beyond the Milky Way. Surveys such as *Euclid*,
+Rubin and Roman should find thousands (at least <Var name="cosmology/n_euclid_min" /> in *Euclid*
+alone), enough to separate CDM from SIDM at up to 5σ.

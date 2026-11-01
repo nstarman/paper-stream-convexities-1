@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Stream convexities: streams and test orbits</title>
+<link rel="stylesheet" href="figpress-apps/index.css">
+<style>
+  body { margin: 0; background: var(--fk-bg); }
+  main { max-width: 1200px; margin: 0 auto; padding: 16px; font-family: var(--fk-font); color: var(--fk-fg); }
+  h1 { font-size: 18px; margin: 0 0 4px; }
+  .cite { margin: 0 0 12px; color: var(--fk-muted); font-size: 13px; }
+  .cite a { color: var(--fk-accent); }
+  .fk-note { margin: 0 0 8px; color: var(--fk-muted); font-size: 12px; }
+  /* The four sky panels beside the globe, two by two, from 600 px of app (the Explore column is
+     ~700 px on a laptop, under figpress-apps' 760 px split); under it when narrower. Half each, so
+     the 2 x 2 is about as tall as the globe. */
+  .fk-split.ov-split { grid-template-columns: minmax(0, 1fr); }
+  @container (min-width: 600px) { .fk-split.ov-split { grid-template-columns: repeat(2, minmax(0, 1fr)); align-items: center; } }
+</style>
+</head>
+<body>
+<main>
+  <h1>Stream convexities: streams and test orbits</h1>
+  <p class="cite">Built from the data of Paper Figures 3 and 4 of
+    <a href="https://ui.adsabs.harvard.edu/abs/2026arXiv260940057S/abstract">Starkman et al. (2026)</a>.</p>
+  <div id="app"></div>
+</main>
+<script type="module">
+  import { run } from "figpress-apps/index.js";
+  import app from "app/widget.js";
+  run(app, document.getElementById("app"));
+</script>
+</body>
+</html>

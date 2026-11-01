@@ -1,0 +1,79 @@
+# The docs site's settings (syw-site). See the syw-site skill's references/settings.md.
+repo: nstarman/paper-stream-convexities-1
+# The paper's record id on nstarkman.space, for its card (/embed/<id>/).
+website_id: stream-convexity-rate
+# Nothing is deployed until this is true — set it at arXiv submission, with the repo public.
+publish: false
+# Filled in when known.
+paper:
+  arxiv: "2609.40057"
+  doi:
+  bibcode: 2026arXiv260940057S
+# How this paper runs Python, if not plain `python` (e.g. `uv run --locked python`).
+# figpress-apps and figpress-plotly only for the webapps: --with leaves uv.lock, and so the Zenodo cache keys, alone.
+python: uv run --locked --with "figpress-apps==2026.11.01" --with "figpress-plotly==2026.10.29.2" python
+# Interactive figures (figpress-apps apps in webapps/<name>/), each with the data files it reads.
+webapps:
+  convexity:
+    inputs:
+      - src/static/streams/triaxial08507_rs14_65Gyr_init2_Mprog1e6_ridgeline
+      - src/static/streams/nbody_q15_ridgeline
+      - src/scripts/streams/ridgeline_data.py
+      - src/scripts/streams/sky_geometry.py
+    # Not Paper Figure 4's interactive version: another figure of its streams (the overview shows it).
+  convexity-full:
+    inputs:
+      - src/static/streams/triaxial08507_rs14_65Gyr_init2_Mprog1e6_ridgeline
+      - src/static/streams/nbody_q15_ridgeline
+      - src/data/triaxial/triaxial_data.npz
+      - src/scripts/streams/ridgeline_data.py
+      - src/scripts/streams/sky_geometry.py
+      - webapps/convexity/export.py
+    explore: true
+    title: "Streams and test orbits"
+    text: "The two simulated streams of Paper Figure 4 and the two test orbits of Paper Figure 3, in the same halo. Drag the globe to turn it, or drag a square to see that stream or orbit from there: red marks where it bends away from the galaxy's centre. Inside the globe, distances from the centre are on a square-root scale: a point r from the centre is drawn at √(r / 90 kpc) of the globe's radius. The sky panels are to scale."
+  uniform-box-rates:   # Not a paper figure: Paper Figure 5 with boxes of shapes the reader draws, each weighted uniformly
+    inputs:
+      - src/scripts/cosmology/step_2_plot_triaxiality.py
+      - src/data/cosmology/rates
+      - src/static/cosmology/literature/prada2019_auriga_mhd.csv
+    explore: true
+    title: "Uniform boxes of halo shapes"
+    text: "Paper Figure 5, with boxes of halo shapes you draw. Drag on the left panel to draw a box in (c/a, b/a); on the right it shows up as the paper marks CDM and SIDM, as a dot-dashed line at the box's mean projected flattening with diamonds at its mean rates, and the table gives the values. A box weights every shape inside it equally. The paper's CDM and SIDM lines do not: they average over the Auriga halos' own shapes (and their rounded SIDM counterparts), which are not spread evenly over the dotted boxes that outline them, so a box drawn over a dotted box need not land on the paper's line."
+  stream-views:   # Paper Figure 4, interactive: drag a marker on the map
+    inputs:
+      - src/static/streams/triaxial08507_rs14_65Gyr_init2_Mprog1e6_ridgeline
+      - src/static/streams/nbody_q15_ridgeline
+      - src/scripts/streams/plot_mollweide.py
+      - src/scripts/streams/viz_ridgeline.py
+      - src/scripts/streams/ridgeline_data.py
+      - src/scripts/streams/sky_geometry.py
+      - src/scripts/streams/sky_style.py
+    figure: "fig:simulations:spray_and_nbody"
+    replaces: true
+  likelihood-ratio:   # Paper Figure 6, interactive: its curves' values on hover
+    inputs:
+      - src/scripts/cosmology/streams_required_pcdm.py
+      - src/data/values/streams_required_pcdm.values.json
+    figure: "fig:cosmology:zlr"
+    replaces: true
+  orbit-views:   # Paper Figure 3, interactive: drag the View dots on the map
+    inputs:
+      - src/data/triaxial/triaxial_data.npz
+    figure: "fig:orbit_triaxial"
+    replaces: true
+  streams-required:   # Paper Figure 7 in figpress-plotly (webapps/streams-required/figure.py)
+    inputs:
+      - src/data/values/streams_required_pcdm.values.json
+    figure: "fig:cosmology:Nreq"
+    replaces: true   # the same figure, so its page shows only the interactive one
+# Where the portrait goes on each figure (centre as fractions of width and height), fully opaque.
+figures:
+  "fig:gd1_convexity": { icon: [0.145, 0.105], alpha: 1 }               # inside the frame, top left
+  "fig:observables:graphic": { icon: [0.075, 0.26], alpha: 1 }           # below "Concave"
+  "fig:orbit_triaxial": { icon: [0.832, 0.11], alpha: 1 }                # between the globe and colorbar
+  "fig:simulations:spray_and_nbody": { icon: [0.83, 0.10], alpha: 1 }    # the same spot
+  "fig:cosmology:convexity_rate_vs_flattening": { icon: [0.04, 0.09], alpha: 1 }  # left of the colorbar
+  "fig:cosmology:zlr": { icon: [0.942, 0.0755], alpha: 1 }               # top right, even margins
+  "fig:cosmology:Nreq": { icon: [0.90, 0.245], alpha: 1 }                 # below the legend
+  "fig:cosmology:convexity_rate_grid_full": { icon: [0.885, 0.09], alpha: 1 }

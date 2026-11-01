@@ -1,0 +1,97 @@
+# Physical inputs for the paper. SINGLE SOURCE OF TRUTH.
+#
+# Read by the figure scripts through `stream_convexity_paper.variables`, and
+# rendered into `output/**/*.tex` for `main.tex` by
+# `src/scripts/make_variables.py`, which `main.tex` reads via `\variable{}`.
+#
+#   make variables        regenerate output/
+#   make variables-check  fail if the committed output/ is stale
+#
+# Each entry is `{value: <number>, unit: <physical unit>}`, with `unit` omitted
+# for dimensionless quantities. Units are the strings the analysis code uses
+# (kpc, Msun, Gyr); the siunitx spelling is derived in `variables.py`. An
+# optional `tex:` field overrides the rendered number for awkward cases.
+#
+# Write exponents as `1.0e+12`, not `1.0e12`: PyYAML implements YAML 1.1, whose
+# float pattern demands a signed exponent. `variables.py` normalises either
+# form, so an unsigned exponent will not silently reach the analysis code as a
+# string, but the signed form is what YAML actually means.
+#
+# This file holds INPUTS only: values the analysis code reads, so editing one
+# here changes what is computed. Nothing else defines them.
+#
+# Values the code *measures* do not belong here. A figure script writes those to
+# its own `derived_values.json`, which `make_variables.py` renders alongside
+# these; see DERIVED_FILES there. Keeping the two apart means every number in
+# `output/` is either an input declared here or a measurement produced by code,
+# and never a hand-copied result that can silently drift.
+
+# Fiducial Milky-Way-mass host. Shared by the single-orbit demonstration
+# (fig:orbit_triaxial) and the Monte-Carlo rate grid: the two calculations use
+# the same halo and differ only in shape, the demonstration fixing one (q1, q2)
+# and the grid scanning them. Declared once so the two cannot drift apart.
+host_potential:
+  m_tot: {value: 1.0e+12, unit: Msun}
+  r_s: {value: 14.0, unit: kpc}
+
+# Figure: fig:gd1_convexity (GD-1 reprojected from outside the Galaxy).
+# Consumed by figures/GD1/plot_gd1_convexities.py. The viewing direction that
+# maximises the convex fraction, and that fraction itself, are measured by that
+# script and written to its .values.json; only the sample size is declared here.
+gd1:
+  # Viewing directions drawn isotropically when searching for the projection
+  # that maximises the convex fraction of the track.
+  n_viewing_angles: {value: 10000, tex: '\num{e4}'}
+
+# Figure: fig:orbit_triaxial (two test-particle orbits in a triaxial NFW halo).
+# Consumed by figures/triaxial/step_1_compute_orbits.py.
+triaxial_orbits:
+  # Axis ratios of the demonstration halo; its mass and scale radius are in
+  # host_potential above. Passed to gp.TriaxialNFWPotential.
+  potential:
+    q1: {value: 0.85}
+    q2: {value: 0.7}
+  # Orbit integration time, t_end in the script.
+  t_integrate: {value: 5.0, unit: Gyr}
+  # The two orbits' eccentricity ranges and peak convex fractions are MEASURED
+  # from the integrated orbits, not set here: the script launches from explicit
+  # phase-space vectors (w0_circ, w0_ellip). See
+  # figures/triaxial/step_1_compute_orbits.values.json.
+
+# Monte-Carlo convexity-rate calculation behind
+# fig:cosmology:convexity_rate_vs_flattening.
+# Consumed by src/scripts/cosmology/step_1_rate_dependence.py.
+#
+# These live here rather than in that script's own `.values.json` because the
+# calculation runs for hours and its output in src/data/cosmology/rates/ is not
+# committed. The manuscript has to be able to quote its configuration without a
+# re-run, which only works if the values are declared rather than exported.
+cosmology_rates:
+  n_orbits: {value: 5000}
+  # Orbit initial conditions are drawn uniformly over this eccentricity range by
+  # generate_orbit_ic. This is the REQUESTED eccentricity: the map from e to
+  # launch speed is exact only for a spherical potential, so achieved
+  # eccentricities spread beyond these bounds in a triaxial one. Describe it in
+  # the manuscript as the range sampled, not the range the orbits have.
+  e_range: [0.0, 0.75]
+  # Apocentric launch radius, drawn uniformly. With r_s = 14 kpc this spans
+  # roughly 2.5 to 7 scale radii, the regime where the halo dominates the
+  # potential.
+  r_range: {value: [35.0, 100.0], unit: kpc}
+  # Launch-direction azimuth within the local tangent plane, over the FULL
+  # circle rather than generate_orbit_ic's 0-90 deg default. The full sweep is
+  # what makes the orbit ensemble isotropic, and hence what makes the rate
+  # exactly symmetric under q1 <-> q2 rather than approximately so. See the
+  # comment at the I_RANGE assignment in step_1_rate_dependence.py.
+  i_range: {value: [0.0, 360.0], unit: deg}
+  # Equal-area sphere grid; the number of viewing directions is n_phi * n_theta.
+  n_phi: {value: 120}
+  n_theta: {value: 60}
+  t_integrate: {value: 5.0, unit: Gyr}
+  # Sliding orbital windows are 2 * window_half long.
+  window_half: {value: 1.0, unit: Gyr}
+  window_step: {value: 0.25, unit: Gyr}
+  # On-sky exclusion radius around the CoM, where host light would defeat
+  # ridge-line tracing. Distinct from the minimum convex-segment length
+  # ell_min, which is a plot-time choice and happens to share this value.
+  r_exclude: {value: 10.0, unit: kpc}

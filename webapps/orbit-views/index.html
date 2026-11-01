@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Paper Figure 3: viewing angles of two orbits</title>
+<link rel="stylesheet" href="figpress-apps/index.css">
+<style>
+  body { margin: 0; background: var(--fk-bg); }
+  main { max-width: 1200px; margin: 0 auto; padding: 16px; font-family: var(--fk-font); color: var(--fk-fg); }
+  h1 { font-size: 18px; margin: 0 0 4px; }
+  .cite { margin: 0 0 12px; color: var(--fk-muted); font-size: 13px; }
+  .cite a { color: var(--fk-accent); }
+  /* In the paper's site, the figure page has the heading and the caption. */
+  .embedded main { padding: 0; } .embedded header { display: none; }
+  /* The paper's figure at its own proportions, the column's width; narrower than 720 px it scrolls
+     sideways rather than shrink the paper's text out of reach. */
+  .ov-scroll { overflow-x: auto; }
+  .ov-figure { position: relative; width: 100%; min-width: 720px; }
+</style>
+</head>
+<body>
+<script>if (self !== top) document.documentElement.classList.add("embedded");</script>
+<main>
+  <header>
+    <h1>Paper Figure 3: viewing angles of two orbits</h1>
+    <p class="cite">Interactive version of Paper Figure 3 of
+      <a href="https://ui.adsabs.harvard.edu/abs/2026arXiv260940057S/abstract">Starkman et al. (2026)</a>.</p>
+  </header>
+  <div id="app"></div>
+</main>
+<script type="module">
+  import { run } from "figpress-apps/index.js";
+  import app from "app/widget.js";
+  run(app, document.getElementById("app"));
+</script>
+</body>
+</html>

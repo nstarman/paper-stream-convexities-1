@@ -1,0 +1,3 @@
+[submodule "src/tex/preamble"]
+	path = src/tex/preamble
+	url = https://github.com/nstarman/preamble
