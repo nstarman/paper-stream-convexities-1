@@ -15,6 +15,10 @@ _syw_config.expand_dependency_directories = lru_cache(maxsize=None)(
 PY = "uv run --locked python"
 PKG = "src/stream_convexity_paper/"
 SETTINGS = ["variables.yml", "pyproject.toml", "uv.lock", "environment.yml"]
+# The Zenodo-cached rules leave out the lock and pyproject: a dependency bump would
+# otherwise change their cache keys and send CI looking for a cache that is not there.
+# After a bump that could change the numbers (numpy, jax, ...), rebuild them by hand.
+CACHED_SETTINGS = ["variables.yml", "environment.yml"]
 
 
 def pkg(*modules):
@@ -38,7 +42,7 @@ rule rate_dependence:
     input:
         script="src/scripts/cosmology/step_1_rate_dependence.py",
         code=pkg("curvature", "data", "variables"),
-        settings=SETTINGS,
+        settings=CACHED_SETTINGS,
     output:
         directory("src/data/cosmology/rates"),
     conda:
@@ -128,7 +132,7 @@ rule graphic:
         svg="src/static/graphic/galaxy.svg",
         pdf="src/static/graphic/galaxy.pdf",
         code=pkg(),
-        settings=SETTINGS,
+        settings=CACHED_SETTINGS,
     output:
         "src/data/graphic/graphic.pdf",
     conda:
