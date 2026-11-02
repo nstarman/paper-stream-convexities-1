@@ -15,7 +15,7 @@ const interactive = (f) => Object.values(facts.webapps ?? {}).some((w) => w.figu
       const im = f.images[0];
       return (
         <a class="syw-gallery-item" id={f.slug} href={url(`figures/${f.slug}/`)}>
-          <img src={url(`generated/figures/${im.webp ?? im.png ?? im.file}`)} alt="" loading="lazy" />
+          <img src={url(`generated/figures/${im.thumb ?? im.webp ?? im.png ?? im.file}`)} alt="" loading="lazy" />
           <span class="syw-gallery-head">
             <strong>Paper Figure {i + 1}</strong>
             {interactive(f) && <span class="syw-badge">Interactive</span>}
