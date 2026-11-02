@@ -4,7 +4,7 @@ import re
 
 import showyourwork.config as _syw_config
 
-# Work around a ShowYourWork performance bug (seen in CP2): after the `syw__dag`
+# Work around a ShowYourWork performance bug: after the `syw__dag`
 # checkpoint it walks every output's upstream dependencies, one `git rev-parse` per
 # edge, which with ~80 \variable{} outputs looks like a hang at "Updating checkpoint
 # dependencies". Memoizing the per-edge helper removes the subprocesses.

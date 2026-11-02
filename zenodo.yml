@@ -1,7 +1,9 @@
 cache:
   main:
     sandbox: 10.5072/zenodo.626662
+    zenodo: 10.5281/zenodo.23873449
   # A pull request's build checks out a detached merge commit, which showyourwork
   # names HEAD: it reads main's cache (CI never uploads; run_cache_rules_on_ci: false).
   HEAD:
     sandbox: 10.5072/zenodo.626662
+    zenodo: 10.5281/zenodo.23873449

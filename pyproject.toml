@@ -42,8 +42,8 @@ dev = [
 
 
 [tool.pytest.ini_options]
-# The package is collected so the docstring examples run: they went stale unnoticed
-# once. Not src/scripts: importing a figure script runs it (step_1 takes ~21 h).
+# The package is collected so the docstring examples run.
+# Not src/scripts: importing a figure script runs it (step_1 takes ~21 h).
 testpaths = ["tests", "src/stream_convexity_paper"]
 addopts = "-ra --doctest-modules"
 

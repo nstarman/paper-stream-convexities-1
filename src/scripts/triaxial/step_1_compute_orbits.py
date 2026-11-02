@@ -248,10 +248,8 @@ r_max_ellip: float = float(_r_ellip_kpc.max())
 # src/scripts/make_variables.py renders into output/triaxial/orbit{1,2}_ecc.tex
 # for the manuscript.
 #
-# The `e_range` handed to `generate_orbit_ic` is a request, not an achievement:
-# the mapping from it to the integrated orbit is an O(triaxiality) approximation,
-# so measure e here rather than quoting what was asked for. Orbit 2 was once
-# quoted as [0.3, 0.4] on that mistake; it integrates to [0.48, 0.57].
+# The `e_range` handed to `generate_orbit_ic` sets the launch, and the map to the
+# integrated orbit is an O(triaxiality) approximation, so e is measured here.
 
 
 def _eccentricity_range(r_kpc: NDArray[np.float64]) -> tuple[float, float]:

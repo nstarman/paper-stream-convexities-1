@@ -216,8 +216,7 @@ m3_mid = q50
 q1_vals = np.unique(q1_flat)
 q2_vals = np.unique(q2_flat)
 # mean_m3 is in q̄-sorted order (it feeds the right panel); q1_flat/q2_flat are
-# not.  Reshape the UNSORTED per-potential mean, or every cell gets the rate of
-# whichever potential happens to share its rank in q̄.
+# in potential-grid order, so the heatmap reshapes the unsorted mean.
 mean_m3_pot = m3_fracs.mean(axis=1)  # (N_POTS,), in potential-grid order
 bad_grid = mean_m3_pot.reshape(len(q1_vals), len(q2_vals))
 # lambda(q1, q2) = lambda(q2, q1) exactly: the grid is the swap-mirror of the
@@ -334,16 +333,11 @@ CDM_CA_MIN, CDM_CA_MAX = _pctl_box(AURIGA_CA, _CA_KNOTS)
 # kpc, inside this band in scaled radius, so it leans on the same r_1(sigma/m)
 # argument as the rest of the region.
 #
-# The c/a FLOOR is the weakest edge: the band-mean median of ~0.83 less an
-# interquartile half-width of ~0.06.  Propagating the Auriga CDM interquartile
-# range multiplicatively instead would put it at 0.74, which is more faithful but
-# admits enough flat haloes to lower qbar.  Flagged rather than hidden.
+# The c/a floor is the band-mean median of ~0.83 less an interquartile
+# half-width of ~0.06.
 #
-# b/a is not taken from the Giocoli+ Table 2 b/a-c/a locus: that locus runs ~0.035
-# low against Auriga's own measured b/a, and mixing it with the Auriga-measured
-# CDM box would compress the b/a gap between the regions artificially.  It is
-# instead the interquartile range of the Auriga haloes that actually populate
-# c/a over this region's range, which is [0.920, 0.960] (n = 31).  Note that
+# b/a is the interquartile range of the Auriga haloes over this region's c/a
+# range, [0.920, 0.960] (n = 31): the same sample as the CDM box.  Note that
 # extending it to b/a = 1 would LOWER qbar, not raise it: at fixed c/a an oblate
 # halo shows its full c/a flattening along every equatorial sightline, whereas a
 # triaxial one shows at most c/b there, so qbar falls as b/a -> 1.
@@ -947,9 +941,7 @@ _y_m3_marks = np.array([rate_at(q, m3_mid).mean() for q in _qbar_dists])
 _in_sidm = sidm_mask
 _in_cdm = cdm_mask
 _xref_region_means = np.array([Q_FLAT[_in_sidm].mean(), Q_FLAT[_in_cdm].mean()])
-# Average the region's own potentials.  Averaging the fitted envelope over the
-# same q̄ values instead would vary only where the curve is sampled, so it would
-# not register the envelope sitting ~3% above the halos it describes.
+# Average the region's own grid potentials.
 _y_m2_region_means = np.array(
     [
         float(mean_m2_pot[_in_sidm].mean()),
@@ -991,10 +983,7 @@ for _xm, _ym in zip(_xref_marks, _y_m2_marks, strict=True):
 # along cell edges, so the full mesh is drawn and clipped to the q1 = q2 line
 # instead: the cells it straddles are cut, and what survives of them carries the
 # value at their own centre, which the mirror makes exact on either side.
-# Derived, not hard-coded: a fixed 0.5 sat outside the view only while the grid
-# floor was 0.60, and silently clipped the mesh short of the right spine once
-# --ca-floor extended the grid to 0.45.  The vertex stays on the b/a = c/a
-# diagonal either way, so the cut line is unchanged.
+# The clip vertex sits just below the grid floor, on the b/a = c/a diagonal.
 _TRI_CLIP_LO: Final = float(min(q1_vals.min(), q2_vals.min())) - 0.1
 _TRI_CLIP_HI: Final = 1.1
 _tri_clip_path = _MplPath(

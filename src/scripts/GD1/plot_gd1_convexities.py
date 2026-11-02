@@ -323,15 +323,9 @@ pct_bad = percentage_bad_per_angle(
     all_theta,
     all_phi,
 )
-# The maximum is attained by many viewing directions at once, not one: in
-# float64 roughly 1.6% of the sampled sphere sees the whole track as
-# non-concave, so `argmax` would be choosing arbitrarily among equivalent
-# answers, and in float32 it was choosing on rounding noise. Any of them makes
-# the paper's point equally well, so pick the one that draws most clearly: the
-# view that bends most visibly among those that stay legible: CoM clear of
-# the track, and the track filling the landscape frame. Deterministic, and
-# stated here so the choice is a presentation decision on the record, not
-# a result.
+# Several viewing directions reach the maximum convex fraction (within
+# PCT_TIE_TOL). Among them, keep those with the CoM clear of the track and the
+# track filling the landscape frame, and show the one that bends most.
 _pct_max = jnp.max(pct_bad)
 _tied = jnp.flatnonzero(pct_bad >= _pct_max - PCT_TIE_TOL)
 
@@ -407,17 +401,11 @@ print(
 # directions showing a convex run longer than a threshold.  Both are measured
 # in PROJECTED on-sky length, which is what an observer measures.
 #
-# These are NOT lambda_det.  Three definitions differ, and prose that sets
-# them beside the population rates has to say so:
-#   1. no on-sky CoM exclusion here, while lambda_det drops every epoch
-#      inside r_exclude of the projected centre, from numerator AND
-#      denominator.  This section is a mock observation of the whole track.
-#   2. a plain contiguous run here, while lambda_det may bridge an inner-disc
-#      passage when the visible arc on both sides is at least ell_min / 2.
-#   3. `>= ell_min` here, `> ell_min` there.
-# Measured under lambda_det's own conventions GD-1 scores zero: its projected
-# track is a median 11.6 kpc, so a 10 kpc projected run needs a near face-on
-# view, and the exclusion then removes the part nearest the centre.
+# These are mock-observation rates for the whole track, defined differently
+# from lambda_det:
+#   1. no on-sky CoM exclusion (lambda_det drops epochs inside r_exclude);
+#   2. a plain contiguous run (lambda_det may bridge an inner-disc passage);
+#   3. `>= ell_min` (lambda_det uses `> ell_min`).
 
 _R_all = jax.vmap(
     lambda t, p: rotation_matrix_from_viewing_angles(t, p).as_matrix(),

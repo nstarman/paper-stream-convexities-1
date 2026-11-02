@@ -275,9 +275,7 @@ N_LR_VALUES = (100, 1_000, 10_000)
 P_CDM_LR = P_CDM_SIM
 P_SIDM_LR = _lam_arc_sidm
 
-# Catalogue size for the worked example in sec:cosmology:excluded.  Chosen so the
-# balanced significance clears 2 sigma: at the Option J rates 3,000 streams give
-# 1.88 sigma, 3,500 give 2.03.
+# Catalogue size for the worked example in sec:cosmology:excluded.
 N_WORKED = 3_500
 P_OBS_GRID = np.linspace(0.0, 0.02, N_PTS)
 
@@ -644,9 +642,6 @@ ax.add_artist(_ann_box)
 # Quadrants, not bands.  Each model is favoured only where a LOW (high) rate
 # actually produces a negative (positive) Z_LR, so the shading is the
 # intersection of the two conditions, meeting at RATE_EQUAL on the zero line.
-# Shading full-height vertical bands, or full-width horizontal ones, colours
-# the off-diagonal quadrants too and reads as if a low rate favoured SIDM
-# whatever Z_LR did, which is what confused readers.
 for _x0, _x1, _y0, _y1, _c in [
     (LR_X_MIN, RATE_EQUAL, LR_Y_MIN, 0.0, SIDM_COLOR),
     (RATE_EQUAL, LR_X_MAX, 0.0, LR_Y_MAX, CDM_COLOR),

@@ -1,19 +1,9 @@
-"""The shared kernel reproduces the implementations it replaced.
+"""The shared curvature kernel matches independent reference implementations.
 
-Before this suite existed the projected-curvature construction was written out
-four times: once per figure script and twice in ``data.py``.  The copies are
-reproduced verbatim below as references, so that collapsing them into
-:mod:`stream_convexity_paper.curvature` can be shown not to have changed any
-number the figures depend on.
-
-Two deliberate differences are asserted rather than hidden:
-
-* the jax rotation now handles the antipode like the numpy one always did;
-* the non-concavity test is ``dot <= 0`` everywhere, where one call site used
-  ``dot < 0`` with a different regularisation.
-
-Both are covered at the end of this module.  Delete this file once the old
-implementations stop being interesting.
+The references below compute the projected curvature directly, so
+:mod:`stream_convexity_paper.curvature` can be checked against them for every
+number the figures depend on.  The tests at the end of this module cover the
+antipodal viewing direction and the ``dot <= 0`` non-concavity criterion.
 """
 
 import jax.numpy as jnp
@@ -33,7 +23,7 @@ RNG = np.random.default_rng(31415)
 
 
 # ════════════════════════════════════════════════════════════════════════════
-# The replaced implementations, verbatim
+# Reference implementations
 # ════════════════════════════════════════════════════════════════════════════
 
 
@@ -125,7 +115,7 @@ def ref_count_bad_normals(q_2d: np.ndarray, nhat_2d: np.ndarray) -> int:
 
 @pytest.mark.parametrize("seed", range(4))
 def test_matches_the_gd1_implementation(seed: int) -> None:
-    """Same normals as the GD-1 figure computed before the refactor."""
+    """Same normals as the GD-1 reference."""
     tangent = RNG.normal(size=(128, 3))
     curvature = RNG.normal(size=(128, 3))
     R = ScipyRotation.random(1, rng=seed)[0]
@@ -145,7 +135,7 @@ def test_matches_the_gd1_implementation(seed: int) -> None:
 
 @pytest.mark.parametrize("seed", range(4))
 def test_matches_the_ridgeline_implementation(seed: int) -> None:
-    """Same normals and curvatures as the ridgeline figures computed before."""
+    """Same normals and curvatures as the ridgeline reference."""
     tangent = RNG.normal(size=(128, 3))
     curvature = RNG.normal(size=(128, 3))
     r = ScipyRotation.random(1, rng=seed).as_matrix()[0]
@@ -184,7 +174,7 @@ def test_matches_the_inline_orbit_algebra() -> None:
         np.testing.assert_allclose(float(kappa), float(ref_kappa), rtol=1e-13)
 
 
-def test_matches_the_old_bad_normal_count() -> None:
+def test_matches_the_reference_bad_normal_count() -> None:
     """Counting is unchanged for ordinary (non-degenerate) inputs."""
     q_2d = RNG.normal(size=(256, 2)) * 10.0
     nhat = RNG.normal(size=(256, 2))
