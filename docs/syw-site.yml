@@ -3,7 +3,7 @@ repo: nstarman/paper-stream-convexities-1
 # The paper's record id on nstarkman.space, for its card (/embed/<id>/).
 website_id: stream-convexity-rate
 # Nothing is deployed until this is true — set it at arXiv submission, with the repo public.
-publish: false
+publish: true
 # Filled in when known.
 paper:
   arxiv: "2609.40057"
