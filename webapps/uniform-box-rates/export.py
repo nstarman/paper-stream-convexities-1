@@ -1,4 +1,4 @@
-"""Export the uniform-box explorer's dataset (Paper Figure 5, boxes drawn by the reader) → <out>/uniform-box-rates/.
+"""Export Paper Figure 5's dataset (its interactive version: boxes drawn by the reader) → <out>/uniform-box-rates/.
 
     uv run --locked --with "figpress-apps==2026.10.29" \
         python webapps/uniform-box-rates/export.py --out build/data
@@ -100,7 +100,7 @@ def main(out: Path) -> Path:
     }
     axes = lambda ax: {"axes": frac(ax), "xlim": list(map(float, ax.get_xlim())), "ylim": list(map(float, ax.get_ylim()))}
     meta = {
-        "title": "Uniform boxes of halo shapes on Paper Figure 5", "paper": PAPER,
+        "title": "Paper Figure 5: convexity rate and halo shape", "paper": PAPER,
         "layout": {"size_pt": [box.width * 72, box.height * 72], "left": axes(left), "right": axes(right)},
         # The paper's populations, weighted by their halos, for comparison; and its interquartile boxes.
         "populations": {
