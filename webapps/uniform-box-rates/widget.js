@@ -1,4 +1,4 @@
-// Uniform boxes on Paper Figure 5: the paper's own figure (step_2_plot_triaxiality.py --simple), on
+// Paper Figure 5, interactive: the paper's own figure (step_2_plot_triaxiality.py --simple), on
 // whose left panel the reader draws boxes of halo shapes (c/a, b/a). Each box weights every shape in
 // it equally, and shows up on the right panel as the paper's CDM and SIDM do: a dot-dashed line at
 // its mean projected flattening and diamonds at its mean lambda_det^(10) and lambda_arc. The paper's

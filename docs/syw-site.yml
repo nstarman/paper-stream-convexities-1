@@ -32,14 +32,13 @@ webapps:
     explore: true
     title: "Streams and test orbits"
     text: "The two simulated streams of Paper Figure 4 and the two test orbits of Paper Figure 3, in the same halo. Drag the globe to turn it, or drag a square to see that stream or orbit from there: red marks where it bends away from the galaxy's centre. Inside the globe, distances from the centre are on a square-root scale: a point r from the centre is drawn at √(r / 90 kpc) of the globe's radius. The sky panels are to scale."
-  uniform-box-rates:   # Not a paper figure: Paper Figure 5 with boxes of shapes the reader draws, each weighted uniformly
+  uniform-box-rates:   # Paper Figure 5, interactive: draw boxes of halo shapes on the left panel
     inputs:
       - src/scripts/cosmology/step_2_plot_triaxiality.py
       - src/data/cosmology/rates
       - src/static/cosmology/literature/prada2019_auriga_mhd.csv
-    explore: true
-    title: "Uniform boxes of halo shapes"
-    text: "Paper Figure 5, with boxes of halo shapes you draw. Drag on the left panel to draw a box in (c/a, b/a); on the right it shows up as the paper marks CDM and SIDM, as a dot-dashed line at the box's mean projected flattening with diamonds at its mean rates, and the table gives the values. A box weights every shape inside it equally. The paper's CDM and SIDM lines do not: they average over the Auriga halos' own shapes (and their rounded SIDM counterparts), which are not spread evenly over the dotted boxes that outline them, so a box drawn over a dotted box need not land on the paper's line."
+    figure: "fig:cosmology:convexity_rate_vs_flattening"
+    replaces: true
   stream-views:   # Paper Figure 4, interactive: drag a marker on the map
     inputs:
       - src/static/streams/triaxial08507_rs14_65Gyr_init2_Mprog1e6_ridgeline
