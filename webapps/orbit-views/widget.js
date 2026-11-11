@@ -6,6 +6,7 @@
 import { loadData } from "figpress-apps/data.js";
 import { createStage, dragHelper } from "figpress-apps/stage.js";
 import { classify, orbitFromData, mollweide, inverseMollweide } from "app/science.js";
+import { startAutopilot } from "app/autopilot.js";
 
 const RAD = Math.PI / 180, X_MAX = 2 * Math.SQRT2, Y_MAX = Math.SQRT2;
 const FONT = '"DejaVu Sans", Verdana, "Bitstream Vera Sans", sans-serif'; // matplotlib's default face
@@ -197,6 +198,7 @@ export default {
     scroller.append(fig);
     el.replaceChildren(toolbar, scroller);
     const dispose = mountFigure(fig, model, { orbits, layout: meta.layout, layer: arrays.paper_layer.data, rNear: meta.r_near_kpc });
-    signal?.addEventListener("abort", () => { dispose(); model.off("change:views", update); });
+    const stopAutopilot = startAutopilot(model, el);
+    signal?.addEventListener("abort", () => { stopAutopilot(); dispose(); model.off("change:views", update); });
   },
 };

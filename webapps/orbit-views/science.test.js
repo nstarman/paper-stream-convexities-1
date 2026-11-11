@@ -6,6 +6,7 @@ import assert from "node:assert/strict";
 import { readFile } from "node:fs/promises";
 import { loadData } from "figpress-apps/data.js";
 import { classify, orbitFromData, mapValue, mollweide, inverseMollweide, direction, edgeOnCircle } from "app/science.js";
+import { routes, routeAt } from "app/autopilot.js";
 
 const fileFetch = async (url) => {
   const buf = await readFile(new URL(url, `file://${process.cwd()}/`));
@@ -38,6 +39,31 @@ test("the edge-on circle's views see the orbital plane edge-on", async () => {
     for (const lb of edgeOnCircle(o.lhat, 36)) {
       const d = direction(lb);
       assert.ok(Math.abs(d[0] * o.lhat[0] + d[1] * o.lhat[1] + d[2] * o.lhat[2]) < 1e-9, `${o.id} ${lb}`);
+    }
+  }
+});
+
+test("the autopilot's routes follow the bright bands of the maps", async () => {
+  // Every point on a route is brighter than its map's median, and the route's median brighter than the map's
+  // 75th percentile: the waypoints still trace the bright cells if the maps change.
+  const data = await load();
+  for (const [id, r] of Object.entries(routes())) {
+    const map = orbitFromData(data, id).map, all = Array.from(map.data).sort((a, b) => a - b);
+    const q = (p) => all[Math.floor(p * (all.length - 1))], L = r.d[r.d.length - 1];
+    const vals = Array.from({ length: 400 }, (_, k) => mapValue(map, routeAt(r, (k / 400) * L))).sort((a, b) => a - b);
+    assert.ok(vals[0] > q(0.5), `${id}: a route point at ${vals[0]} is no brighter than the map's median ${q(0.5)}`);
+    assert.ok(vals[200] > q(0.75), `${id}: route median ${vals[200]} vs the map's 75th percentile ${q(0.75)}`);
+  }
+});
+
+test("the autopilot's views move smoothly: no jump between frames", () => {
+  for (const [id, r] of Object.entries(routes())) {
+    const L = r.d[r.d.length - 1];
+    let prev = routeAt(r, 0);
+    for (let s = 0.5; s <= 3 * L; s += 0.5) {
+      const p = routeAt(r, s), step = Math.hypot(p[0] - prev[0], p[1] - prev[1]);
+      assert.ok(step <= 0.5 + 1e-9, `${id}: jump of ${step.toFixed(2)} deg at s = ${s}`);
+      prev = p;
     }
   }
 });
