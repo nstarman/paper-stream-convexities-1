@@ -7,6 +7,7 @@
 import { loadData } from "figpress-apps/data.js";
 import { createStage, dragHelper } from "figpress-apps/stage.js";
 import { classify, streamFromData, project, density, autoLimits, mollweide, inverseMollweide } from "app/science.js";
+import { startAutopilot } from "app/autopilot.js";
 
 const X_MAX = 2 * Math.SQRT2, Y_MAX = Math.SQRT2;
 const FONT = '"DejaVu Sans", Verdana, "Bitstream Vera Sans", sans-serif'; // matplotlib's default face
@@ -191,6 +192,7 @@ export default {
     const images = { layer: arrays.paper_layer.data, overlay: arrays.overlay.data,
                      markers: Object.fromEntries(streams.map((s) => [s.id, arrays[`${s.id}_marker`].data])) };
     const dispose = mountFigure(fig, model, { streams, layout: meta.layout, images });
-    signal?.addEventListener("abort", () => { dispose(); model.off("change:views", update); });
+    const stopAutopilot = startAutopilot(model, el);
+    signal?.addEventListener("abort", () => { stopAutopilot(); dispose(); model.off("change:views", update); });
   },
 };

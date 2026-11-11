@@ -6,6 +6,7 @@ import assert from "node:assert/strict";
 import { readFile } from "node:fs/promises";
 import { loadData } from "figpress-apps/data.js";
 import { classify, streamFromData, project, density, mollweide, inverseMollweide } from "app/science.js";
+import { routes, routeAt } from "app/autopilot.js";
 
 const fileFetch = async (url) => {
   const buf = await readFile(new URL(url, `file://${process.cwd()}/`));
@@ -38,5 +39,32 @@ test("Mollweide inverts", () => {
   for (const lb of [[0, 0], [11.97, 58.11], [138.5, 68.5], [-150, -75]]) {
     const back = inverseMollweide(mollweide(lb));
     assert.ok(Math.hypot(back[0] - lb[0], back[1] - lb[1]) < 1e-6, `${lb} → ${back}`);
+  }
+});
+
+test("the autopilot's routes follow the bright arcs of the maps", async () => {
+  // The map is classify's fraction on a 6 degree grid. Every point on a route is brighter than the map's median,
+  // and the route's median brighter than its 75th percentile: the waypoints still trace the bright cells.
+  const data = await load();
+  for (const [id, r] of Object.entries(routes())) {
+    const s = streamFromData(data, id), grid = [];
+    for (let b = -87; b <= 87; b += 6) for (let l = -177; l <= 177; l += 6) grid.push(classify(s, [l, b]).fraction);
+    grid.sort((a, b) => a - b);
+    const q = (p) => grid[Math.floor(p * (grid.length - 1))], L = r.d[r.d.length - 1];
+    const vals = Array.from({ length: 120 }, (_, k) => classify(s, routeAt(r, (k / 120) * L)).fraction).sort((a, b) => a - b);
+    assert.ok(vals[0] > q(0.5), `${id}: a route point at ${vals[0]} is no brighter than the map's median ${q(0.5)}`);
+    assert.ok(vals[60] > q(0.75), `${id}: route median ${vals[60]} vs the map's 75th percentile ${q(0.75)}`);
+  }
+});
+
+test("the autopilot's views move smoothly: no jump between frames", () => {
+  for (const [id, r] of Object.entries(routes())) {
+    const L = r.d[r.d.length - 1];
+    let prev = routeAt(r, 0);
+    for (let s = 0.5; s <= 3 * L; s += 0.5) {
+      const p = routeAt(r, s), step = Math.hypot(p[0] - prev[0], p[1] - prev[1]);
+      assert.ok(step <= 0.5 + 1e-9, `${id}: jump of ${step.toFixed(2)} deg at s = ${s}`);
+      prev = p;
+    }
   }
 });
